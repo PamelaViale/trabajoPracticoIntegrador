@@ -1,5 +1,6 @@
 // Integrantes del grupo : Viale Pamela   
 const prompt = require("prompt-sync")();
+// node tp-integrador.js
 
 //--------------------- Trabajo Práctico Integrador
 //---------------------- Introducción a Javascript 
@@ -48,3 +49,85 @@ const libros = [
     { id: 4, nombre: "Ivan Viale", email: "ivan.viale@gmail.com", librosPrestados: [] },
     { id: 5, nombre: "Liza Viale", email: "liza.viale@gmail.com", librosPrestados: [2, 5] }
   ]
+
+  //----------------------------  2. Funciones de Gestión de Libros
+
+  // A. Implementar una función agregarLibro(id, titulo, autor, anio, genero) que agregue un nuevo libro al array libros. (push)
+  
+  // B. Crear una función buscarLibro(criterio, valor) que permita buscar libros por título, autor o género utilizando el algoritmo de búsqueda lineal. (filter)
+  
+  // C. Desarrollar una función ordenarLibros(criterio) que ordene los libros por título o año utilizando el algoritmo de ordenamiento burbuja (bubble sort) y luego muestre los libros ordenados en la consola. (for anidado)
+  
+  // D. Desarrollar una función borrarLibro(id) que elimine el libro que se le pase por parámetro. (findIndex)
+  
+
+
+// A. Función para agregar un nuevo libro:
+
+// const agregarLibro = (id, titulo, autor, anio, genero) => {
+//   const nuevoLibro = { id, titulo, autor, año: anio, genero, disponible: true }
+//   libros.push(nuevoLibro)
+//   console.log(`Libro agregado: "${titulo}"`)
+// };
+// agregarLibro(11, "La cúpula", "Stephen King", 2009, "Terror")
+//  console.log(libros)
+
+
+
+// B. Buscar libro
+// const buscarLibro = (criterio, valor) => {
+//   const resultado = libros.filter(libro => libro[criterio].toLowerCase().includes(valor.toLowerCase()));
+//   console.log("Resultado de búsqueda:", resultado);
+// };
+// buscarLibro("titulo", "It")
+
+
+
+ // C. Ordenar libros 
+
+ // con la i y la j represento los índices, para poder comparar por ejemplo el año de cada libro y ahi poder ordenarlos. 
+
+// const ordenarLibros = (criterio) => {
+//   for (let i = 0; i < libros.length - 1; i++) {
+//     for (let j = 0; j < libros.length - i - 1; j++) {
+//       if (libros[j][criterio] > libros[j + 1][criterio]) {
+//         let temp = libros[j];
+//         libros[j] = libros[j + 1]
+//         libros[j + 1] = temp;
+//       }
+//     }
+//   }
+//   console.log(`Libros ordenados por ${criterio}:`, libros)
+// };
+
+// ordenarLibros("año")
+
+
+
+// // D. Borrar libro
+
+// const borrarLibro = (id) => {
+//   const index = libros.findIndex(libro => libro.id === id)
+//   if (index !== -1) {
+//     const borrado = libros.splice(index, 1)
+//     console.log(`Libro eliminado:`, borrado)
+//   } else {
+//     console.log("Libro no encontrado.")
+//   }
+// };
+
+// borrarLibro(4)
+
+
+// ----------------------------  3. Gestión de Usuarios
+
+// A.Implementar una función registrarUsuario(nombre, email) que agregue un nuevo usuario al array usuarios. 
+
+// B.Implementar una función mostrarTodosLosUsuarios() que me devuelva el array completo de usuarios
+
+// C.Crear una función buscarUsuario(email) que devuelva la información de un usuario dado su email.
+
+// D.Implementar una función borrarUsuario(nombre, email) que elimine el usuario seleccionado.
+
+
+
