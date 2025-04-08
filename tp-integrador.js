@@ -121,13 +121,100 @@ const libros = [
 
 // ----------------------------  3. Gestión de Usuarios
 
-// A.Implementar una función registrarUsuario(nombre, email) que agregue un nuevo usuario al array usuarios. 
+// A.Implementar una función registrarUsuario(nombre, email) que agregue un nuevo usuario al array usuarios. (push agrega una nuevo elemnto al array, al final)
 
-// B.Implementar una función mostrarTodosLosUsuarios() que me devuelva el array completo de usuarios
+// B.Implementar una función mostrarTodosLosUsuarios() que me devuelva el array completo de usuarios (recorro array y muestro resultado, uso filter)
 
-// C.Crear una función buscarUsuario(email) que devuelva la información de un usuario dado su email.
+// C.Crear una función buscarUsuario(email) que devuelva la información de un usuario dado su email.(Find busca y devuelve el primer elemento del array que cumpla una condición 
+ 
+// D.Implementar una función borrarUsuario(nombre, email) que elimine el usuario seleccionado. (findIndex,devuelve el índice del primer elemento que cumpla con una condición. Si no encuentra ninguno, devuelve -1, tambien uso splice para eliminar un elemneto) 
 
-// D.Implementar una función borrarUsuario(nombre, email) que elimine el usuario seleccionado.
+
+// A. Registrar usuario
+
+// const registrarUsuario = (nombre, email) => {
+//   const nuevoUsuario = {
+//     id: usuarios.length + 1,
+//     nombre,
+//     email,
+//     librosPrestados: []
+//   };
+//   usuarios.push(nuevoUsuario);
+//   console.log(`Usuario registrado: ${nombre}`)
+// };
+
+
+// registrarUsuario("Rodrigo", "rodrigo.viale@gmail.com")
+
+
+// console.log("Usuarios registrados:", usuarios)
+
+
+// // B. Mostrar todos los usuarios
+
+// uso parametros para que pueda buscarlos por los criterios que pase como argumentos
+
+// const buscarUsuarios = (criterio, valor) => {
+//   const resultados = usuarios.filter(user => {
+//     const campo = user[criterio]
+
+//     if (typeof campo === "string") {
+//       return campo.toLowerCase().includes(valor.toLowerCase())
+//     }
+
+//     return campo === valor
+//   });
+
+//   if (resultados.length > 0) {
+//     console.log("Usuarios encontrados:", resultados)
+//   } else {
+//     console.log("No se encontraron usuarios con ese criterio.")
+//   }
+// }
+
+
+// buscarUsuarios("nombre", "juan")          
+// buscarUsuarios("email", "dafne.viale@gmail.com")
+// buscarUsuarios("id", 3)
+
+
+// // C. Buscar usuario
+
+// const buscarUsuario = (email) => {
+//   const usuario = usuarios.find(u => u.email.toLowerCase() === email.toLowerCase());
+//   console.log("Usuario encontrado:", usuario || "No encontrado");
+// };
+
+// buscarUsuario("liza.viale@gmail.com")
+// buscarUsuario("ivan.viale@gmail.com")
+
+
+
+// // D. Borrar usuario
+// u busca cada item de usuario
+
+// const borrarUsuario = (nombre, email) => {
+//   const index = usuarios.findIndex(u => u.nombre === nombre && u.email === email);
+//   if (index !== -1) {
+//     const eliminado = usuarios.splice(index, 1)
+//     console.log("Usuario eliminado:", eliminado)
+//   } else {
+//     console.log("Usuario no encontrado.")
+//   }
+// }
+
+// borrarUsuario("Pamela Viale", "pamela.viale@gmail.com")
+
+
+// 4. Sistema de Préstamos
+
+// A.Desarrollar una función prestarLibro(idLibro, idUsuario) que marque un libro como no disponible y lo agregue a la lista de libros prestados del usuario. Luego mostrar que libro se prestó y a que usuario.
+
+// B.Implementar una función devolverLibro(idLibro, idUsuario) que marque un libro como disponible y lo elimine de la lista de libros prestados del usuario.
+
+
+
+
 
 
 
