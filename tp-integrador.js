@@ -213,8 +213,36 @@ const libros = [
 // B.Implementar una función devolverLibro(idLibro, idUsuario) que marque un libro como disponible y lo elimine de la lista de libros prestados del usuario.
 
 
+// const prestarLibro = (idLibro, idUsuario) => {
+//   const libro = libros.find(l => l.id === idLibro)
+//   const usuario = usuarios.find(u => u.id === idUsuario)
+
+//   if (libro && libro.disponible && usuario) {
+//     libro.disponible = false;
+//     usuario.librosPrestados.push(libro.id);
+//     console.log(`"${libro.titulo}" fue prestado a ${usuario.nombre}`)
+//   } else {
+//     console.log("No se puede prestar el libro.")
+//   }
+// }
+
+// prestarLibro(4,3) // prestamos Misery a Barbara
+// prestarLibro(2,5) // Prestamos Carrie A Liza
+// prestarLibro(2,4)// Carrie ya lo prestamos a liza por eso no podemos volver a prestarlo
+
+// const devolverLibro = (idLibro, idUsuario) => {
+//   const libro = libros.find(l => l.id === idLibro);
+//   const usuario = usuarios.find(u => u.id === idUsuario)
+
+//   if (libro && usuario) {
+//     libro.disponible = true;
+//     usuario.librosPrestados = usuario.librosPrestados.filter(id => id !== idLibro);
+//     console.log(`"${libro.titulo}" fue devuelto por ${usuario.nombre}`)
+//   } else {
+//     console.log("No se puede devolver el libro.")
+//   }
+// };
 
 
-
-
+// devolverLibro(4,3)// Misery fue devuelto por barbara
 
