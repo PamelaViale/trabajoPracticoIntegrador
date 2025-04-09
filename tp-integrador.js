@@ -210,7 +210,7 @@ const libros = [
 
 // A.Desarrollar una función prestarLibro(idLibro, idUsuario) que marque un libro como no disponible y lo agregue a la lista de libros prestados del usuario. Luego mostrar que libro se prestó y a que usuario.
 
-// B.Implementar una función devolverLibro(idLibro, idUsuario) que marque un libro como disponible y lo elimine de la lista de libros prestados del usuario.
+// B.Implementar una función devolverLibro(idLibro, idUsuario) que marque un libro como disponible y lo elimine de la lista de libros prestados del usuario. (cambia el booleano si el libro fue devuelto)
 
 
 // const prestarLibro = (idLibro, idUsuario) => {
@@ -246,3 +246,77 @@ const libros = [
 
 // devolverLibro(4,3)// Misery fue devuelto por barbara
 
+
+// 5. Reportes
+// Crear una función generarReporteLibros() que utilice métodos avanzados de arrays (.map(), .filter(), .reduce()) para generar un reporte con la siguiente información:
+// Cantidad total de libros. length para longitud de array/string
+// Cantidad de libros prestados.//filter
+// Cantidad de libros por género. //reduce y tengo que acumular para que los sume por genero
+// Libro más antiguo y más nuevo // reduce , segun el año
+
+
+const generarReporteLibros = () => {
+  const totalLibros = libros.length
+
+  const librosPrestados = libros.filter(libro => !libro.disponible).length;
+
+  const cantidadPorGenero = libros.reduce((acc, libro) => {
+    acc[libro.genero] = (acc[libro.genero] || 0) + 1
+    return acc
+  }, {})
+
+  const libroMasAntiguo = libros.reduce((antiguo, actual) =>
+    actual.año < antiguo.año ? actual : antiguo
+  );
+
+  const libroMasNuevo = libros.reduce((nuevo, actual) =>
+    actual.año > nuevo.año ? actual : nuevo
+  );
+
+  console.log("Reporte de Libros:")
+  console.log("Total de libros:", totalLibros)
+  console.log("Libros prestados:", librosPrestados) // de 10 libros hay 2 prestados
+  console.log("Cantidad de libros por género:", cantidadPorGenero);
+  console.log("Libro más antiguo:", libroMasAntiguo.titulo, `(${libroMasAntiguo.año})`)
+  console.log("Libro más nuevo:", libroMasNuevo.titulo, `(${libroMasNuevo.año})`)
+};
+
+generarReporteLibros()
+
+
+// 6. Identificación Avanzada de libros
+// Implementar una función librosConPalabrasEnTitulo() que identifique y muestre los títulos de los libros que contienen más de una palabra. Además la función debe excluir aquellos títulos que contengan números y/o caracteres especiales. Por último mostrar en la consola el array resultante. () armar un array que solo contenga los caracteres permitidos, letras en mayuscula y minuscula y vocales con acento, hacer la consulta en relacion a ese array
+
+
+const librosConPalabrasEnTitulo = () => {
+  const caracteresPermitidos = [
+    ...'abcdefghijklmnopqrstuvwxyz',
+    ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+    ...'áéíóúÁÉÍÓÚ',
+    ' '
+  ]
+
+  const resultado = libros.filter(libro => {
+    const titulo = libro.titulo.trim() // eliminamos espacios al inicio y fin
+    const palabras = titulo.split(/\s+/) // dividimos cada titulo en palabras
+
+    if (palabras.length <= 1) return false // excluyo si tiene una palabra o menos
+
+    // verifico que los caracteres seas los permitidos
+    for (let i = 0; i < titulo.length; i++) {
+      const caracter = titulo[i]
+      if (!caracteresPermitidos.includes(caracter)) {
+        return false; // si hay algún caracter no permitido, excluimos el libro
+      }
+    }
+
+    return true
+  })
+
+  const titulos = resultado.map(libro => libro.titulo)
+  console.log("Títulos válidos con más de una palabra y sin caracteres especiales ni números:")
+  console.log(titulos)
+}
+
+
+librosConPalabrasEnTitulo()
